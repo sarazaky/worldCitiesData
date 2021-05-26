@@ -16,7 +16,7 @@ public class Test {
 		List<City> cities = cityDAO.readCitiesFromCSV("C:\\Users\\saraz\\Desktop\\Cities.csv");
 		
 		
-		//Create a map that uses the country code as keys and a list of cities as the value for each country.
+		//A map that uses the country code as keys and a list of cities as the value for each country.
 		Map<String, List<City>> cityMap = DataOperation.mapCountryToCity(countries, cities);
 		System.out.println(cityMap);
 		
@@ -27,11 +27,11 @@ public class Test {
 		List<Integer> popOFCountries= DataOperation.populationOFCountries(countries);
 		System.out.println(popOFCountries);
 		
-		//Get the average countries population
+		//The average countries population
 		int avg = DataOperation.avgCountryPopulation(countries);
 		System.out.println(avg);
 		
-		//Get the maximum countries population
+		//The maximum countries population
 		int max = DataOperation.maxCountryPopulation(countries);
 		System.out.println(max);
 		

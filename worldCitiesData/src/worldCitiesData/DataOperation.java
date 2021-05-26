@@ -13,6 +13,7 @@ import java.util.stream.IntStream;
 
 public class DataOperation {
 	
+	//A map that uses the country code as keys and a list of cities as the value for each country.
 	public static Map<String, List<City>> mapCountryToCity(List<Country> countries, List<City> cities){
 		
 		Map<String , List<City>> cityMap = new HashMap<>();
@@ -24,6 +25,7 @@ public class DataOperation {
 		return cityMap;	
 	}
 	
+	//For a given country code (from Console) sort the cities according to the population
 	public static void getCountryInfoConsole(List<City> cities) throws IOException {
 		
 		System.out.println("Enter Country code: ");
@@ -34,13 +36,13 @@ public class DataOperation {
 
 	}
 	
-	
+	//Get a List of countries population
 	public static List<Integer> populationOFCountries(List<Country> countries){
 		
 		return countries.stream().map(Country::getPopulation).collect(Collectors.toList());
 	}
 	
-	
+	//The average countries population
 	public static int avgCountryPopulation(List<Country> countries) {
 		
 		List<Integer> pop = populationOFCountries(countries);
@@ -48,7 +50,7 @@ public class DataOperation {
 		return avg;
 	}
 	
-	
+	//The maximum countries population
 	public static int maxCountryPopulation(List<Country> countries) {
 		
 		List<Integer> pop = populationOFCountries(countries);

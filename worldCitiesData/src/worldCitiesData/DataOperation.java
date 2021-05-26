@@ -63,15 +63,18 @@ public class DataOperation {
 	public static List<City> maxPopCities(List<Country> countries, List<City> cities){
 		Map<String , List<City>> cityMap = mapCountryToCity(countries, cities);
 		
-		List<City> maxPopCity = new ArrayList<City>();
+		List<City> maxPopCityList = new ArrayList<City>();
 		for(Map.Entry<String, List<City>> entry : cityMap.entrySet()) {
+//			City maxPopCity = entry.getValue().stream().max(Comparator.comparingInt(City::getPopulation)).orElse(null);
+//			maxPopCityList.add(maxPopCity);
+			
 			List<City> l = entry.getValue().stream().sorted(Comparator.comparingInt(City::getPopulation)
 							.reversed()).collect(Collectors.toList());
 			if (l.size() != 0) {
-				maxPopCity.add(l.get(0));
+				maxPopCityList.add(l.get(0));
 			}
 		}
-		return maxPopCity;
+		return maxPopCityList;
 	}
 	
 	//Highest population capital
@@ -79,6 +82,9 @@ public class DataOperation {
 		
 		List<Integer> capitalIDs = countries.stream().map(Country::getCapital).collect(Collectors.toList());
 		
+//		City highPopCapital = cities.stream().filter(c -> capitalIDs.contains(c.getId())).
+//				max(Comparator.comparingInt(City::getPopulation)).orElse(null);
+
 		List<City> l = cities.stream().filter(c -> capitalIDs.contains(c.getId())).sorted(Comparator.
 				comparingInt(City::getPopulation).reversed()).collect(Collectors.toList());
 		

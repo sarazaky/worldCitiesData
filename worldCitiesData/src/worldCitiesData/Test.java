@@ -18,30 +18,30 @@ public class Test {
 		
 		//A map that uses the country code as keys and a list of cities as the value for each country.
 		Map<String, List<City>> cityMap = DataOperation.mapCountryToCity(countries, cities);
-		System.out.println(cityMap);
+		System.out.println("Map countries to cities: " + cityMap);
 		
 		//For a given country code (from Console) sort the cities according to the population
 		DataOperation.getCountryInfoConsole(cities);
 		
 		//Get a List of countries population
 		List<Integer> popOFCountries= DataOperation.populationOFCountries(countries);
-		System.out.println(popOFCountries);
+		System.out.println("List of countries population" + popOFCountries);
 		
 		//The average countries population
 		int avg = DataOperation.avgCountryPopulation(countries);
-		System.out.println(avg);
+		System.out.println("Average Population is: " + avg);
 		
 		//The maximum countries population
 		int max = DataOperation.maxCountryPopulation(countries);
-		System.out.println(max);
+		System.out.println("max Population is: " + max);
 		
 		//Highest population city of each country
 		List<City> maxPopCities= DataOperation.maxPopCities(countries, cities);
-		System.out.println(maxPopCities);
+		System.out.println("Highest population city of each country: " + maxPopCities);
 		
 		//Highest population capital
 		City highPopCapital = DataOperation.maxPopCapital(countries, cities);
-		System.out.println(highPopCapital);
+		System.out.println("the Highest population capital is: " + highPopCapital);
 				
 
 	}

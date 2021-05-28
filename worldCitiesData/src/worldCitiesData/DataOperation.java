@@ -32,7 +32,8 @@ public class DataOperation {
 		InputStreamReader r=new InputStreamReader(System.in);
 		BufferedReader br=new BufferedReader(r);
 		String counrtyCode =br.readLine();
-		cities.stream().filter(c -> c.getCountryCode().equals(counrtyCode)).sorted(Comparator.comparingInt(City::getPopulation).reversed()).forEach(c -> System.out.println(c));
+		cities.stream().filter(c -> c.getCountryCode().equals(counrtyCode))
+		.sorted(Comparator.comparingInt(City::getPopulation).reversed()).forEach(c -> System.out.println(c));
 
 	}
 	
@@ -65,14 +66,14 @@ public class DataOperation {
 		
 		List<City> maxPopCityList = new ArrayList<City>();
 		for(Map.Entry<String, List<City>> entry : cityMap.entrySet()) {
-//			City maxPopCity = entry.getValue().stream().max(Comparator.comparingInt(City::getPopulation)).orElse(null);
-//			maxPopCityList.add(maxPopCity);
+			City maxPopCity = entry.getValue().stream().max(Comparator.comparingInt(City::getPopulation)).orElse(null);
+			maxPopCityList.add(maxPopCity);
 			
-			List<City> l = entry.getValue().stream().sorted(Comparator.comparingInt(City::getPopulation)
-							.reversed()).collect(Collectors.toList());
-			if (l.size() != 0) {
-				maxPopCityList.add(l.get(0));
-			}
+//			List<City> l = entry.getValue().stream().sorted(Comparator.comparingInt(City::getPopulation)
+//							.reversed()).collect(Collectors.toList());
+//			if (l.size() != 0) {
+//				maxPopCityList.add(l.get(0));
+//			}
 		}
 		return maxPopCityList;
 	}
@@ -82,13 +83,13 @@ public class DataOperation {
 		
 		List<Integer> capitalIDs = countries.stream().map(Country::getCapital).collect(Collectors.toList());
 		
-//		City highPopCapital = cities.stream().filter(c -> capitalIDs.contains(c.getId())).
-//				max(Comparator.comparingInt(City::getPopulation)).orElse(null);
+		City highPopCapital = cities.stream().filter(c -> capitalIDs.contains(c.getId())).
+				max(Comparator.comparingInt(City::getPopulation)).orElse(null);
 
-		List<City> l = cities.stream().filter(c -> capitalIDs.contains(c.getId())).sorted(Comparator.
-				comparingInt(City::getPopulation).reversed()).collect(Collectors.toList());
-		
-		City highPopCapital = l.get(0);
+//		List<City> l = cities.stream().filter(c -> capitalIDs.contains(c.getId())).sorted(Comparator.
+//				comparingInt(City::getPopulation).reversed()).collect(Collectors.toList());
+//		
+//		City highPopCapital = l.get(0);
 		
 		return highPopCapital;
 	}
